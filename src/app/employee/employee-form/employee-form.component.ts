@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmployeeService } from 'src/app/shared/employee.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -8,6 +9,6 @@ import { Component } from '@angular/core';
 })
 export class EmployeeFormComponent {
 
-  constructor() {}
+  constructor(public service:EmployeeService) {}
 
 }

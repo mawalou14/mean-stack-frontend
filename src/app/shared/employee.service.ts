@@ -9,7 +9,8 @@ export class EmployeeService {
   constructor(private fb: FormBuilder) { }
 
   employeeForm = this.fb.group({
-    fullName: [null],
+    _id: [null],
+    fullName: [''],
     position: [''],
     location: [''],
     salary: [''],
