@@ -1,4 +1,5 @@
-<form class="row" [formGroup]="service.employeeForm">
+<form class="row" [formGroup]="service.employeeForm" (submit)="onSubmit()"
+[class.submitted]="submitted">
     <div class="col-12 mb-3">
         <label class="form-label">Full Name</label>
         <input type="text" placeholder="Enter your full name" class="form-control form-control-lg"
@@ -18,6 +19,6 @@
         <input type="number" placeholder="Per year" class="form-control form-control-lg" formControlName="salary">
     </div>
     <div class="col-12 mb-3 d-grid">
-        <button class="btn btn-lg btn-primary">Submit</button>
+        <button class="btn btn-lg btn-primary" type="submit">Submit</button>
     </div>
 </form>
