@@ -11,13 +11,16 @@ export class EmployeeFormComponent {
 
   submitted: boolean = false;
 
-  constructor(public service:EmployeeService) {}
+  constructor(public service: EmployeeService) { }
 
   onSubmit() {
     this.submitted = true;
-    if(this.service.employeeForm.valid)
-    console.log();
-    
+    if (this.service.employeeForm.valid) {
+      this.service.postEmployee()
+        .subscribe((response) => {
+          console.log('got the response');
+        })
+    }
   }
 
 }
