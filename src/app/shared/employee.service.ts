@@ -11,8 +11,8 @@ export class EmployeeService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 
-  readonly baseUrl = 'http://localhost:3000/api/employees/';
-  // readonly baseUrl = 'https://employee-management-api-lymo.onrender.com/api/employees';
+  // readonly baseUrl = 'http://localhost:3000/api/employees/';
+  readonly baseUrl = 'https://employee-management-api-lymo.onrender.com/api/employees/';
 
   list: Employee[] = [];
 
@@ -38,12 +38,12 @@ export class EmployeeService {
   }
 
   editEmployee() {
-    return this.http.put(this.baseUrl+this.employeeForm.get('_id')?.value, this.employeeForm.value)
+    return this.http.put(this.baseUrl + this.employeeForm.get('_id')?.value, this.employeeForm.value)
       .pipe(catchError(this.errorHandler))
   }
 
   deleteEmployee(_id: string) {
-    return this.http.delete(this.baseUrl+ _id)
+    return this.http.delete(this.baseUrl + _id)
       .pipe(catchError(this.errorHandler))
   }
 
