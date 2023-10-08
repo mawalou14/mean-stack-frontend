@@ -20,6 +20,7 @@ export class EmployeeFormComponent {
       this.service.postEmployee()
         .subscribe((response) => {
           this.resetForm();
+          this.service.getEmployeeLists();
         })
     }
   }
