@@ -28,7 +28,7 @@ export class EmployeeFormComponent {
       else
         this.service.editEmployee()
           .subscribe((response) => {
-            this.toastr.success('Updated successfully', 'Employee Updated')
+            this.toastr.info('Updated successfully', 'Employee Updated')
             this.service.getEmployeeLists();
             this.resetForm();
           })

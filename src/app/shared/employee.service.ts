@@ -42,6 +42,11 @@ export class EmployeeService {
       .pipe(catchError(this.errorHandler))
   }
 
+  deleteEmployee(_id: string) {
+    return this.http.delete(this.baseUrl+ _id)
+      .pipe(catchError(this.errorHandler))
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.log('An error Occured: ' + error.error);
