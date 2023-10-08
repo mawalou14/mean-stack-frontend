@@ -17,7 +17,7 @@ export class EmployeeService {
   list: Employee[] = [];
 
   employeeForm = this.fb.group({
-    _id: [null],
+    _id: [''],
     fullName: ['', Validators.required],
     position: ['', Validators.required],
     location: [''],
