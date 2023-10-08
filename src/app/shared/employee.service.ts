@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { catchError, throwError } from 'rxjs';
+import { Employee } from './employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,10 @@ export class EmployeeService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 
-  readonly baseUrl = 'http://localhost:3000/api/employees';
+  readonly baseUrl = 'http://localhost:3000/api/employees/';
   // readonly baseUrl = 'https://employee-management-api-lymo.onrender.com/api/employees';
+
+  list: Employee[] = [];
 
   employeeForm = this.fb.group({
     _id: [null],
@@ -20,6 +23,15 @@ export class EmployeeService {
     location: [''],
     salary: ['', Validators.required],
   });
+
+  getEmployeeLists() {
+    this.http.get(this.baseUrl)
+      .pipe(catchError(this.errorHandler))
+      .subscribe(data => {
+        this.list = data as Employee[];
+        console.log(data);
+      })
+  }
 
   postEmployee() {
     return this.http.post(this.baseUrl, this.employeeForm.value)
