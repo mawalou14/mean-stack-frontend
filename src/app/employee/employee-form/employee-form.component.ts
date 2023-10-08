@@ -18,12 +18,20 @@ export class EmployeeFormComponent {
   onSubmit() {
     this.submitted = true;
     if (this.service.employeeForm.valid) {
-      this.service.postEmployee()
-        .subscribe((response) => {
-          this.toastr.success('Created successfully', 'Employee Registered')
-          this.service.getEmployeeLists();
-          this.resetForm();
-        })
+      if (this.service.employeeForm.get('_id')?.value == '')
+        this.service.postEmployee()
+          .subscribe((response) => {
+            this.toastr.success('Created successfully', 'Employee Registered')
+            this.service.getEmployeeLists();
+            this.resetForm();
+          })
+      else
+        this.service.editEmployee()
+          .subscribe((response) => {
+            this.toastr.success('Updated successfully', 'Employee Updated')
+            this.service.getEmployeeLists();
+            this.resetForm();
+          })
     }
   }
 

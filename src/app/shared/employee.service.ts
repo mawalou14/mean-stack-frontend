@@ -37,6 +37,11 @@ export class EmployeeService {
       .pipe(catchError(this.errorHandler))
   }
 
+  editEmployee() {
+    return this.http.put(this.baseUrl+this.employeeForm.get('_id')?.value, this.employeeForm.value)
+      .pipe(catchError(this.errorHandler))
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.log('An error Occured: ' + error.error);
