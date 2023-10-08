@@ -29,7 +29,6 @@ export class EmployeeService {
       .pipe(catchError(this.errorHandler))
       .subscribe(data => {
         this.list = data as Employee[];
-        console.log(data);
       })
   }
 
