@@ -21,3 +21,15 @@ form button[type=submit] {
 form.ng-invalid.submitted input.ng-invalid {
     border-color: #b02a37;
 }
+
+table tr td:not(:last-child):hover {
+    cursor: pointer;
+}
+
+table tr td:last-child>i:hover {
+    cursor: pointer;
+}
+
+table thead th {
+    color: gray !important;
+}
